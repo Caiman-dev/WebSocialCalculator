@@ -1,0 +1,94 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #e5e5e5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__container {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 50px 30px 50px;
+    z-index: 1;
+    min-height: 550px;
+    width: 850px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logo__title {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: #6b6b6b;
+    font-size: 12px;
+}
+
+.input__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input__container__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.input__container__row__bot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row__bot__left {
+    display: flex;
+    align-items: center;
+    gap: 30px
+}
+
+.input__width-1 {
+    width: 215px;
+}
+
+.input__width-2 {
+    width: 130px;
+}
+
+.amount {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.save__file {
+    transition: opacity .1s;
+}
+
+.save__file:hover {
+    opacity: 0.8;
+}

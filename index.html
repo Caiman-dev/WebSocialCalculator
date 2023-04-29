@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор доставки груза</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/social-calc.css" />
+</head>
+
+<body>
+    <section>
+        <div class="main__container">
+            <div class="logo">
+                <a href="https://www.donbass-post.ru/" class=""><img src="images/logo.jpg" /></a>
+                <div class="logo__title">
+                    <span class="title">*Расчет действителен на <span id="date"></span></span>
+                    <span class="title">*Указана ориентировочная стоимость на дату расчета</span>
+                    <span class="title">*Максимельный вес 10 000кг</span>
+                </div>
+            </div>
+            <div class="input__container">
+                <div class="input__container__row">
+                    <div class="input-field input__width-1">
+                        <select id="sender">
+                            <option value="" disabled selected>Город отправки:</option>
+                            <option value="Донецк">Донецк</option>
+                            <option value="Макеевка">Макеевка</option>
+                            <option value="Горловка">Горловка</option>
+                            <option value="Енакиево">Енакиево</option>
+                            <option value="Шахтерск">Шахтерск</option>
+                            <option value="Алчевск">Алчевск</option>
+                            <option value="Луганск">Луганск</option>
+                            <option value="Стаханов">Стаханов</option>
+                            <option value="Мариуполь">Мариуполь</option>
+                            <option value="Бердянск">Бердянск</option>
+                            <option value="Мелитополь">Мелитополь</option>
+                            <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+                            <option value="Москва">Москва</option>
+                            <option value="Евпатория">Евпатория</option>
+                            <option value="Севастополь">Севастополь</option>
+                            <option value="Симферополь">Симферополь</option>
+                            <option value="Ялта">Ялта</option>
+                        </select>
+                        <label>Откуда:</label>
+                    </div>
+                    <div class="input-field input__width-1">
+                        <select id="reciever">
+                            <option value="" disabled selected>Город выдачи:</option>
+                            <option value="Донецк">Донецк</option>
+                            <option value="Макеевка">Макеевка</option>
+                            <option value="Горловка">Горловка</option>
+                            <option value="Енакиево">Енакиево</option>
+                            <option value="Шахтерск">Шахтерск</option>
+                            <option value="Алчевск">Алчевск</option>
+                            <option value="Луганск">Луганск</option>
+                            <option value="Стаханов">Стаханов</option>
+                            <option value="Мариуполь">Мариуполь</option>
+                            <option value="Бердянск">Бердянск</option>
+                            <option value="Мелитополь">Мелитополь</option>
+                            <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+                            <option value="Москва">Москва</option>
+                            <option value="Евпатория">Евпатория</option>
+                            <option value="Севастополь">Севастополь</option>
+                            <option value="Симферополь">Симферополь</option>
+                            <option value="Ялта">Ялта</option>
+                        </select>
+                        <label>Куда:</label>
+                    </div>
+                    <div class="input-field input__width-1">
+                        <select id="type">
+                            <option value="" disabled selected>Выберите вид:</option>
+                            <option value="Письмо">Письмо</option>
+                            <option value="Документы">Документы</option>
+                            <option value="Груз">Груз</option>
+                        </select>
+                        <label>Вид груза:</label>
+                    </div>
+                </div>
+                <div class="input__container__row">
+                    <div class="input-field input__width-2">
+                        <input placeholder="0.1" id="weight" type="text" class="validate"
+                            onblur="CheckWeight(); CheckInputs();" onfocus="CheckWeight(); CheckInputs();"
+                            onchange="CheckWeight(); CheckInputs();">
+                        <label for="weight">Вес, кг:</label>
+                        <span class="helper-text" data-error="Введено неверное значение!"></span>
+                    </div>
+                    <div class="input-field input__width-2">
+                        <input placeholder="0.1" id="volume" type="text" class="validate"
+                            onblur="CheckVolume(); CheckInputs();" onfocus="CheckVolume(); CheckInputs();"
+                            onchange="CheckVolume(); CheckInputs();">
+                        <label for="volume">Объёмный вес, кг:</label>
+                        <span class="helper-text" data-error="Введено неверное значение!"></span>
+                    </div>
+                    <div class="input-field input__width-2">
+                        <input placeholder="1" id="length" type="text" class="validate"
+                            onblur="CheckLength(); CheckInputs();" onfocus="CheckLength(); CheckInputs();"
+                            onchange="CheckLength(); CheckInputs();">
+                        <label for="length">Длина, см</label>
+                        <span class="helper-text" data-error="Введено неверное значение!"></span>
+                    </div>
+                    <div class="input-field input__width-2">
+                        <input placeholder="1" id="width" type="text" class="validate"
+                            onblur="CheckWidth(); CheckInputs();" onfocus="CheckWidth(); CheckInputs();"
+                            onchange="CheckWidth(); CheckInputs();">
+                        <label for="width">Ширина, см</label>
+                        <span class="helper-text" data-error="Введено неверное значение!"></span>
+                    </div>
+                    <div class="input-field input__width-2">
+                        <input placeholder="1" id="height" type="text" class="validate"
+                            onblur="CheckHeight(); CheckInputs();" onfocus="CheckHeight(); CheckInputs();"
+                            onchange="CheckHeight(); CheckInputs();">
+                        <label for="height">Высота, см</label>
+                        <span class="helper-text" data-error="Введено неверное значение!"></span>
+                    </div>
+                </div>
+                <div class="input__container__row__bot">
+                    <div class="row__bot__left">
+                        <a class="waves-effect waves-light btn red" id="result-btn" onclick="GetResult()">Рассчитать</a>
+                        <div class="amount">
+                            <span class="span-2">Итого:</span>
+                            <span id="result-field" class="span-1">0 р</span>
+                        </div>
+                    </div>
+                    <div class="row__bot__right">
+                        <a href="#" class="save__file">Сохранить расчет</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.4.0.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/social-calc.js"></script>
+</body>
+
+</html>
