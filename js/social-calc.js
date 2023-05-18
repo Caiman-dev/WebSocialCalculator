@@ -91,6 +91,46 @@ let tarif = [
     [350, 550, 300, 400, 450, 550, 800, 900, 1000, 1100, 1300, 1900, 2300, 2700, 3400, 4000, 4500, 5100, 6000, 7250, 32, 30, 28, 28, 28, 135000]
 ];
 
+//заполняем города
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, {
+        data: {
+            "Донецк": null,
+            "Макеевка": null,
+            "Горловка": null,
+            "Енакиево": null,
+            "Шахтерск": null,
+            "Снежное": null,
+            "Алчевск": null,
+            "Луганск": null,
+            "Стаханов": null,
+            "Мариуполь": null,
+            "Бердянск": null,
+            "Мелитополь": null,
+            "Ростов-на-Дону": null,
+            "Москва": null,
+            "Евпатория": null,
+            "Севастополь": null,
+            "Симферополь": null,
+            "Ялта": null
+        },
+        minLength: 0,
+    });
+
+    $('#sender').on('keyup', function () {
+        if (instances[0].count === 0) {
+            $('#reciever').val('');
+        }
+    })
+
+    $('#reciever').on('keyup', function () {
+        if (instances[0].count === 0) {
+            $('#reciever').val('');
+        }
+    })
+});
+
 //запись выбранных городов в переменные
 $("#sender").on('change', function () {
     senderCity = sender.value;
@@ -638,7 +678,7 @@ function GetResult() {
     col = 0;
     GetRow();
     GetCol();
-    console.log(cargoType, senderCity, recieverCity, weightValue, volumeValue, maxValue, row, col);
+    console.log(`cargoType = ${cargoType}, senderCity = ${senderCity}, recieverCity = ${recieverCity}, weightValue = ${weightValue}, volumeValue = ${volumeValue}, maxValue = ${maxValue}, row = ${row}, col = ${col}`);
 
     let resultField = document.getElementById("result-field");
 
